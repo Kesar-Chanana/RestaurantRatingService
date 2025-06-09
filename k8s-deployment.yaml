@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restaurant-rating-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restaurant-rating-app
+  template:
+    metadata:
+      labels:
+        app: restaurant-rating-app
+    spec:
+      containers:
+      - name: restaurant-rating-app
+        image: restaurant-rating-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080

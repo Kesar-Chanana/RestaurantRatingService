@@ -1,117 +1,103 @@
-# RestaurantReviewSystem
+# Restaurant Rating Service - Cloud Native Java App 
 
-RestaurantReviewSystem is a scalable and modular backend application built using Spring Boot and MongoDB. It provides RESTful APIs to support user registration, restaurant management, rating submissions, and retrieval of top-rated restaurants. Designed with clean architecture and adherence to SOLID and DRY principles, the system is maintainable, extendable, and production-ready.
+This is a simple Java-based Restaurant Rating Service that I containerized using **Docker** and deployed on a **Kubernetes cluster** with **Minikube** for local testing. The infrastructure is partly managed via **Terraform** (Infrastructure as Code).
 
----
-
-## Table of Contents
-
-- Features
-- Architecture
-- Tech Stack
-- Getting Started
-- Running the Application
-- API Endpoints
-- Usage Examples (CLI)
-- Best Practices Followed
-- Future Enhancements
-- License
+The goal of this project is to demonstrate cloud-native application patterns:
+- Containerization
+- Kubernetes orchestration
+- Infrastructure as Code (IaC)
+- (Optional) CI/CD with GitHub Actions
 
 ---
 
-## Features
-
-- User registration and authentication
-- Add, update, delete, and view restaurants
-- Submit and view ratings and reviews
-- Calculate average rating for each restaurant
-- Fetch top-rated restaurants by average score
-- RESTful API structure for integration and testing
-
----
-
-## Architecture
-
-- Controller layer to expose REST endpoints
-- Service layer for business logic
-- Repository layer using Spring Data MongoDB
-- Domain models representing users, restaurants, and reviews
-
----
-
-## Tech Stack
+## 🛠️ Tech Stack
 
 - Java 17
-- Spring Boot
-- Spring Data MongoDB
-- Maven
-- MongoDB
-- Postman / Curl for testing
+- Docker 🐳
+- Kubernetes (Minikube)
+- Terraform
+- GitHub Actions (optional - planned)
+- PowerShell / Windows
 
 ---
 
+## 🚀 Features
 
-## Running the Application
-
-Use the following command to run the project:
-```
-mvn spring-boot:run
-```
-
-Application will be available at: `http://localhost:8080`
+✅ Java REST API service  
+✅ Dockerized application  
+✅ Kubernetes Deployment + Service (NodePort)  
+✅ Terraform-managed Kubernetes Namespace  
+✅ Local development using Minikube  
 
 ---
 
-## API Endpoints
+## 🚀 How to Run Locally
 
-- `POST /users` - Register a new user
-- `GET /users/{id}` - Get user details
-- `POST /restaurants` - Add a restaurant
-- `GET /restaurants` - List all restaurants
-- `POST /reviews` - Submit a review
-- `GET /restaurants/top-rated` - Get top-rated restaurants
+### 1️⃣ Build Docker Image
 
----
-
-## Usage Examples (CLI)
-
-Register a user:
-```
-curl -X POST http://localhost:8080/users -H "Content-Type: application/json" -d '{"name":"John Doe","email":"john@example.com"}'
-```
-
-Add a restaurant:
-```
-curl -X POST http://localhost:8080/restaurants -H "Content-Type: application/json" -d '{"name":"Tasty Bites","location":"New York"}'
-```
-
-Submit a review:
-```
-curl -X POST http://localhost:8080/reviews -H "Content-Type: application/json" -d '{"userId":"123", "restaurantId":"456", "rating":4, "comment":"Great food!"}'
-```
-
-Get top-rated restaurants:
-```
-curl http://localhost:8080/restaurants/top-rated
+```bash
+docker build -t restaurant-rating-app:latest .
 ```
 
 ---
 
-## Best Practices Followed
+### Start your Minikube cluster
 
-- SOLID Principles
-- Layered Architecture
-- Exception Handling
-- RESTful API Design
-- DTO Usage for API requests/responses
+```bash
+minikube start
+```
 
 ---
 
-## Future Enhancements
+### Load environment to talk to Minikube Docker
+```bash
+minikube -p minikube docker-env | Invoke-Expression
+```
 
-- JWT-based authentication
-- Pagination and sorting
-- Role-based access control
-- Swagger/OpenAPI documentation
+### Deploy Kubernetes resources
+
+```bash
+kubectl apply -f k8s-deployment.yaml
+kubectl apply -f service.yaml
+```
 
 ---
+
+### Terraform - create Namespace
+```bash
+terraform init
+terraform apply -auto-approve
+```
+### Access service
+
+```bash
+minikube service restaurant-rating-service --url
+```
+
+---
+
+### 5. Provision infrastructure with Terraform
+
+```bash
+terraform init
+terraform apply -auto-approve
+```
+
+---
+
+## ✅ Prerequisites
+
+- Docker installed and running
+- Minikube installed
+- kubectl installed
+- Terraform installed
+- GitHub Actions configured (if using CI/CD)
+
+---
+
+## 🛠️ Technologies Used
+
+- Java Spring Boot
+- Docker
+- Kubernetes
+- Terraform

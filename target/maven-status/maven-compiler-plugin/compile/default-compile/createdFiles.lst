@@ -1,0 +1,16 @@
+com\bounteous\solid\controller\UserController.class
+com\bounteous\solid\entity\AppUser.class
+com\bounteous\solid\services\RatingService.class
+com\bounteous\solid\SolidApplication.class
+com\bounteous\solid\config\SecurityConfig.class
+com\bounteous\solid\entity\Rating.class
+com\bounteous\solid\services\UserService.class
+com\bounteous\solid\controller\RatingController.class
+com\bounteous\solid\repository\RatingRepository.class
+com\bounteous\solid\controller\TestControlller.class
+com\bounteous\solid\entity\Restaurant.class
+com\bounteous\solid\util\Constants.class
+com\bounteous\solid\repository\UserRepository.class
+com\bounteous\solid\controller\RestaurantController.class
+com\bounteous\solid\services\RestaurantService.class
+com\bounteous\solid\repository\RestaurantRepository.class
